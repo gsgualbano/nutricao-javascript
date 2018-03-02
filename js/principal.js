@@ -39,6 +39,12 @@ for(var i = 0; i < pacientes.length; i++) {
     }
 }
 
+var botao = documento.querySelector("#adicionar-paciente");
+
+botao.addEventListener("click", function () {
+    console.log("Oi, cliquei no botão.");
+});
+
 
 
 
