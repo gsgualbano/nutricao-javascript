@@ -13,37 +13,54 @@ for(var i = 0; i < pacientes.length; i++) {
     var altura = tdAltura.textContent;
     
     var tdImc = paciente.querySelector(".info-imc");
-    var imc = peso/(altura *altura);
-    
-    var pesoEhValido = true;
-    var alturaEhValido = true;
 
-    if(peso <= 0  ||  peso >= 1000) {
-        console.log("Peso inválido");
-        pesoEhValido = false;
+    
+    var pesoEhValido = validaPeso(peso);
+    var alturaEhValido = validaAltura(altura);
+
+    if(!pesoEhValido) {
         tdImc.textContent = "Peso Inválido";
         //paciente.style.backgroundColor = "lightcoral";
         paciente.classList.add("paciente-invalido");
     }
 
-    if(altura <= 0 || altura >= 3.0) {
-        console.log("Altura invalida");
-        alturaEhValido = false;
-        tdImc.textContent = "Altura Invalido";
+    if(!alturaEhValido) {
+        tdImc.textContent = "Altura Inválida";
         //paciente.style.backgroundColor = "lightcoral";
         paciente.classList.add("paciente-invalido");
     }
 
     if(pesoEhValido && alturaEhValido) {
-        tdImc.textContent = imc.toFixed(2);
+        tdImc.textContent = calculaImc(peso, altura);
     }
 }
 
-var botao = documento.querySelector("#adicionar-paciente");
+function validaPeso(peso) {
+    if(peso >= 0  &&  peso < 1000) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
-botao.addEventListener("click", function () {
-    console.log("Oi, cliquei no botão.");
-});
+function validaAltura(altura) {
+    if(altura >= 0 && altura <= 3.0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function calculaImc(peso, altura) {
+    var imc = 0;
+
+    imc = peso/(altura * altura);
+
+    return imc.toFixed(2);
+}
+
+
+
 
 
 
