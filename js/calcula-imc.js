@@ -3,7 +3,7 @@ titulo.textContent =  "Aparecida Nutricionista";
 
 var pacientes = document.querySelectorAll(".pacientes");
 
-for(var i = 0; i < pacientes.length; i++) {
+for (var i = 0; i < pacientes.length; i++) {
     var paciente = pacientes[i];
 
     var tdPeso = paciente.querySelector(".info-peso");
@@ -14,7 +14,6 @@ for(var i = 0; i < pacientes.length; i++) {
     
     var tdImc = paciente.querySelector(".info-imc");
 
-    
     var pesoEhValido = validaPeso(peso);
     var alturaEhValido = validaAltura(altura);
 
